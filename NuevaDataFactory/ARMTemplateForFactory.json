@@ -13,7 +13,7 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/linkedService1')]",
+			"name": "[concat(parameters('factoryName'), '/AzureBlobStorageNDF')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -25,6 +25,83 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedTextNDF')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorageNDF",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "Titanic-Dataset.csv",
+						"container": "contenedor"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "PassengerId",
+						"type": "String"
+					},
+					{
+						"name": "Survived",
+						"type": "String"
+					},
+					{
+						"name": "Pclass",
+						"type": "String"
+					},
+					{
+						"name": "Name",
+						"type": "String"
+					},
+					{
+						"name": "Sex",
+						"type": "String"
+					},
+					{
+						"name": "Age",
+						"type": "String"
+					},
+					{
+						"name": "SibSp",
+						"type": "String"
+					},
+					{
+						"name": "Parch",
+						"type": "String"
+					},
+					{
+						"name": "Ticket",
+						"type": "String"
+					},
+					{
+						"name": "Fare",
+						"type": "String"
+					},
+					{
+						"name": "Cabin",
+						"type": "String"
+					},
+					{
+						"name": "Embarked",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorageNDF')]"
+			]
 		}
 	]
 }
