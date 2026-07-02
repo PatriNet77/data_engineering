@@ -8,9 +8,6 @@
 		"AzureSqlDatabaseNDF_password": {
 			"value": ""
 		},
-		"AzureKeyVault1_properties_typeProperties_baseUrl": {
-			"value": "https://almacendeclavesazure.vault.azure.net/"
-		},
 		"AzureSqlDatabaseNDF_properties_typeProperties_server": {
 			"value": "serverngdr.database.windows.net"
 		},
@@ -18,7 +15,7 @@
 			"value": "free-sql-db-3956124"
 		},
 		"AzureSqlDatabaseNDF_properties_typeProperties_userName": {
-			"value": "patriciaedapslaffsolis@hotmail.com"
+			"value": "patrinet"
 		},
 		"containerUri": {
 			"value": ""
