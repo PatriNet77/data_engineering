@@ -5,7 +5,8 @@
 			"PipelineBillingEnabled": "false",
 			"factoryStagingLSReferenceName": "",
 			"factoryStagingLSType": "",
-			"factoryStagingFolderPath": ""
+			"factoryStagingFolderPath": "",
+			"PolicyValidationEnabled": "true"
 		}
 	},
 	"location": "brazilsouth"
