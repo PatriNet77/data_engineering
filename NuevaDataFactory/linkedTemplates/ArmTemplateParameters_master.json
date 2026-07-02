@@ -5,6 +5,21 @@
 		"factoryName": {
 			"value": "NuevaDataFactory"
 		},
+		"AzureSqlDatabaseNDF_password": {
+			"value": ""
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://almacendeclavesazure.vault.azure.net/"
+		},
+		"AzureSqlDatabaseNDF_properties_typeProperties_server": {
+			"value": "serverngdr.database.windows.net"
+		},
+		"AzureSqlDatabaseNDF_properties_typeProperties_database": {
+			"value": "free-sql-db-3956124"
+		},
+		"AzureSqlDatabaseNDF_properties_typeProperties_userName": {
+			"value": "patriciaedapslaffsolis@hotmail.com"
+		},
 		"containerUri": {
 			"value": ""
 		},

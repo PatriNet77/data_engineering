@@ -6,6 +6,26 @@
 			"type": "string",
 			"metadata": "Nombre de instancia de Data Factory",
 			"defaultValue": "NuevaDataFactory"
+		},
+		"AzureSqlDatabaseNDF_password": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"password\"de \"AzureSqlDatabaseNDF\""
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://almacendeclavesazure.vault.azure.net/"
+		},
+		"AzureSqlDatabaseNDF_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "serverngdr.database.windows.net"
+		},
+		"AzureSqlDatabaseNDF_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "free-sql-db-3956124"
+		},
+		"AzureSqlDatabaseNDF_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "patriciaedapslaffsolis@hotmail.com"
 		}
 	},
 	"variables": {
@@ -102,6 +122,41 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorageNDF')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureKeyVault1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureKeyVault",
+				"typeProperties": {
+					"baseUrl": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlDatabaseNDF')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"server": "[parameters('AzureSqlDatabaseNDF_properties_typeProperties_server')]",
+					"database": "[parameters('AzureSqlDatabaseNDF_properties_typeProperties_database')]",
+					"encrypt": "optional",
+					"trustServerCertificate": false,
+					"authenticationType": "SQL",
+					"userName": "[parameters('AzureSqlDatabaseNDF_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('AzureSqlDatabaseNDF_password')]"
+					}
+				}
+			},
+			"dependsOn": []
 		}
 	]
 }
