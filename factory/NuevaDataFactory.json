@@ -1,0 +1,9 @@
+{
+	"name": "NuevaDataFactory",
+	"properties": {
+		"globalConfigurations": {
+			"PipelineBillingEnabled": "false"
+		}
+	},
+	"location": "brazilsouth"
+}
