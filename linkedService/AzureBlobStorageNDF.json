@@ -1,0 +1,11 @@
+{
+	"name": "AzureBlobStorageNDF",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"containerUri": "https://cuentalmacen2026.blob.core.windows.net/contenedor",
+			"authenticationType": "Anonymous"
+		}
+	}
+}
