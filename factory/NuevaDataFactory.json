@@ -3,8 +3,9 @@
 	"properties": {
 		"globalConfigurations": {
 			"PipelineBillingEnabled": "false",
-			"factoryStagingLSReferenceName": "linkedService1",
-			"factoryStagingLSType": "LinkedServiceReference"
+			"factoryStagingLSReferenceName": "",
+			"factoryStagingLSType": "",
+			"factoryStagingFolderPath": ""
 		}
 	},
 	"location": "brazilsouth"
