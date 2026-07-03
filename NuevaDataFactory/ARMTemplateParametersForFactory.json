@@ -5,11 +5,20 @@
 		"factoryName": {
 			"value": "NuevaDataFactory"
 		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://cuentalmacen2026.dfs.core.windows.net/"
+		},
 		"AzureSqlDatabaseNDF_properties_typeProperties_server": {
 			"value": "serverngdr.database.windows.net"
 		},
 		"AzureSqlDatabaseNDF_properties_typeProperties_database": {
 			"value": "free-sql-db-3956124"
+		},
+		"RestService1_properties_typeProperties_url": {
+			"value": "https://pokeapi.co/api/v2/ "
 		}
 	}
 }
