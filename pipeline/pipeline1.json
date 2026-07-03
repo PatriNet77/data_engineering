@@ -78,7 +78,8 @@
 									"path": "$['results'][0]['url']"
 								}
 							}
-						]
+						],
+						"collectionReference": "$['results']"
 					}
 				},
 				"inputs": [
