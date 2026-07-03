@@ -7,10 +7,6 @@
 			"metadata": "Nombre de instancia de Data Factory",
 			"defaultValue": "NuevaDataFactory"
 		},
-		"AzureSqlDatabaseNDF_password": {
-			"type": "secureString",
-			"metadata": "Cadena protegida para \"password\"de \"AzureSqlDatabaseNDF\""
-		},
 		"AzureSqlDatabaseNDF_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "serverngdr.database.windows.net"
@@ -18,10 +14,6 @@
 		"AzureSqlDatabaseNDF_properties_typeProperties_database": {
 			"type": "string",
 			"defaultValue": "free-sql-db-3956124"
-		},
-		"AzureSqlDatabaseNDF_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "patrinet"
 		}
 	},
 	"variables": {
@@ -130,13 +122,26 @@
 					"server": "[parameters('AzureSqlDatabaseNDF_properties_typeProperties_server')]",
 					"database": "[parameters('AzureSqlDatabaseNDF_properties_typeProperties_database')]",
 					"encrypt": "optional",
-					"trustServerCertificate": false,
-					"authenticationType": "SQL",
-					"userName": "[parameters('AzureSqlDatabaseNDF_properties_typeProperties_userName')]",
-					"password": {
-						"type": "SecureString",
-						"value": "[parameters('AzureSqlDatabaseNDF_password')]"
+					"trustServerCertificate": true,
+					"authenticationType": "UserAssignedManagedIdentity",
+					"credential": {
+						"referenceName": "credentialNDF",
+						"type": "CredentialReference"
 					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/credentials/credentialNDF')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/credentialNDF')]",
+			"type": "Microsoft.DataFactory/factories/credentials",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "ManagedIdentity",
+				"typeProperties": {
+					"resourceId": "/subscriptions/3b736aa5-bd69-4019-9352-ee8fae45a45c/resourceGroups/NuevoGrupoDeRecursos/providers/Microsoft.ManagedIdentity/userAssignedIdentities/adadminasigusuario"
 				}
 			},
 			"dependsOn": []
