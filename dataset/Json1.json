@@ -10,6 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": "pokemon.json",
+				"folderPath": "pokeapi",
 				"fileSystem": "contenedor"
 			}
 		},
