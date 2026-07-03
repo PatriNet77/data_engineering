@@ -1,0 +1,19 @@
+{
+	"name": "LS_SQL_SalesDB",
+	"properties": {
+		"description": "Ejercicio 2",
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "serverngdr.database.windows.net",
+			"database": "free-sql-db-3956124",
+			"encrypt": "optional",
+			"trustServerCertificate": true,
+			"authenticationType": "UserAssignedManagedIdentity",
+			"credential": {
+				"referenceName": "credentialNDF",
+				"type": "CredentialReference"
+			}
+		}
+	}
+}
