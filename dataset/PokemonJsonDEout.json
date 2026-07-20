@@ -1,0 +1,20 @@
+{
+	"name": "PokemonJsonDEout",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageDE",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "pokejson.js",
+				"folderPath": "pokemon",
+				"container": "contenedorpato"
+			}
+		},
+		"schema": {}
+	}
+}
