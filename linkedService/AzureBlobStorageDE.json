@@ -1,0 +1,11 @@
+{
+	"name": "AzureBlobStorageDE",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"containerUri": "https://cuentadealmacenpato.blob.core.windows.net/contenedorpato",
+			"authenticationType": "Anonymous"
+		}
+	}
+}
