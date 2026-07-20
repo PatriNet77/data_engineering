@@ -1,0 +1,13 @@
+{
+	"name": "RestServiceDE",
+	"properties": {
+		"description": "para la api de Pokemon",
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://pokeapi.co/api/v2/pokemon?limit=10",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
