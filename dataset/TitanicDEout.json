@@ -1,0 +1,72 @@
+{
+	"name": "TitanicDEout",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseDE",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "PassengerId",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Survived",
+				"type": "bit"
+			},
+			{
+				"name": "Pclass",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sex",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Age",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SibSp",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Parch",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Ticket",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Fare",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 4
+			},
+			{
+				"name": "Cabin",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Embarked",
+				"type": "char"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Titanic"
+		}
+	}
+}
