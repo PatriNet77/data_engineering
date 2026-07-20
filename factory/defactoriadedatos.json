@@ -1,0 +1,15 @@
+{
+	"name": "defactoriadedatos",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "brazilsouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "4e387716-fe47-483c-854d-0fd5283572e5",
+		"tenantId": "5d43cb40-239f-450f-bbf4-5f062caacf07"
+	}
+}
