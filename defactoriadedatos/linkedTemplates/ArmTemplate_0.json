@@ -6,6 +6,14 @@
 			"type": "string",
 			"metadata": "Nombre de instancia de Data Factory",
 			"defaultValue": "defactoriadedatos"
+		},
+		"AzureSqlDatabaseDE_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "deservidorsql.database.windows.net"
+		},
+		"AzureSqlDatabaseDE_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "debasededatos"
 		}
 	},
 	"variables": {
@@ -113,6 +121,106 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorageDE')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlDatabaseDE')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"server": "[parameters('AzureSqlDatabaseDE_properties_typeProperties_server')]",
+					"database": "[parameters('AzureSqlDatabaseDE_properties_typeProperties_database')]",
+					"encrypt": "optional",
+					"trustServerCertificate": true,
+					"authenticationType": "UserAssignedManagedIdentity",
+					"credential": {
+						"referenceName": "credencialazure",
+						"type": "CredentialReference"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/credentials/credencialazure')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/TitanicDEout')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabaseDE",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "PassengerId",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "Survived",
+						"type": "bit"
+					},
+					{
+						"name": "Pclass",
+						"type": "tinyint",
+						"precision": 3
+					},
+					{
+						"name": "Name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Sex",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Age",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "SibSp",
+						"type": "tinyint",
+						"precision": 3
+					},
+					{
+						"name": "Parch",
+						"type": "tinyint",
+						"precision": 3
+					},
+					{
+						"name": "Ticket",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Fare",
+						"type": "decimal",
+						"precision": 10,
+						"scale": 4
+					},
+					{
+						"name": "Cabin",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Embarked",
+						"type": "char"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Titanic"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabaseDE')]"
 			]
 		}
 	]

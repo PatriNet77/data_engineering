@@ -5,6 +5,12 @@
 		"factoryName": {
 			"value": "defactoriadedatos"
 		},
+		"AzureSqlDatabaseDE_properties_typeProperties_server": {
+			"value": "deservidorsql.database.windows.net"
+		},
+		"AzureSqlDatabaseDE_properties_typeProperties_database": {
+			"value": "debasededatos"
+		},
 		"containerUri": {
 			"value": ""
 		},
