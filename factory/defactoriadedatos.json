@@ -1,6 +1,10 @@
 {
 	"name": "defactoriadedatos",
 	"properties": {
+		"globalConfigurations": {
+			"factoryStagingLSReferenceName": "AzureBlobStorageDE",
+			"factoryStagingLSType": "LinkedServiceReference"
+		},
 		"trustModeClaimForMi": {
 			"value": "Disabled",
 			"editable": true
