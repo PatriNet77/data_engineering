@@ -7,6 +7,14 @@
 			"metadata": "Nombre de instancia de Data Factory",
 			"defaultValue": "defactoriadedatos"
 		},
+		"AzureBlobStorageDE_properties_typeProperties_serviceEndpoint": {
+			"type": "string",
+			"defaultValue": "https://cuentadealmacenpato.blob.core.windows.net/"
+		},
+		"RestServiceDE_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://pokeapi.co/api/v2/"
+		},
 		"AzureSqlDatabaseDE_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "deservidorsql.database.windows.net"
@@ -28,7 +36,23 @@
 				"annotations": [],
 				"type": "AzureBlobStorage",
 				"typeProperties": {
-					"containerUri": "https://cuentadealmacenpato.blob.core.windows.net/contenedorpato",
+					"serviceEndpoint": "[parameters('AzureBlobStorageDE_properties_typeProperties_serviceEndpoint')]",
+					"accountKind": "StorageV2"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/RestServiceDE')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "para la api de Pokemon",
+				"annotations": [],
+				"type": "RestService",
+				"typeProperties": {
+					"url": "[parameters('RestServiceDE_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
 					"authenticationType": "Anonymous"
 				}
 			},
@@ -41,7 +65,7 @@
 			"properties": {
 				"type": "ManagedIdentity",
 				"typeProperties": {
-					"resourceId": "/subscriptions/b7c05e58-85aa-4bff-9b8c-41b13a14ef18/resourceGroups/GrupoDeRecursosDE/providers/Microsoft.ManagedIdentity/userAssignedIdentities/deidentidadadmin"
+					"resourceId": "/subscriptions/b7c05e58-85aa-4bff-9b8c-41b13a14ef18/resourcegroups/GrupoDeRecursosDE/providers/Microsoft.ManagedIdentity/userAssignedIdentities/deidentidadadmin"
 				}
 			},
 			"dependsOn": []

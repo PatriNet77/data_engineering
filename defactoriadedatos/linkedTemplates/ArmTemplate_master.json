@@ -7,6 +7,10 @@
 			"metadata": "Nombre de instancia de Data Factory",
 			"defaultValue": "defactoriadedatos"
 		},
+		"AzureBlobStorageDE_properties_typeProperties_serviceEndpoint": {
+			"type": "string",
+			"defaultValue": "https://cuentadealmacenpato.blob.core.windows.net/"
+		},
 		"AzureSqlDatabaseDE_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "deservidorsql.database.windows.net"
@@ -14,6 +18,10 @@
 		"AzureSqlDatabaseDE_properties_typeProperties_database": {
 			"type": "string",
 			"defaultValue": "debasededatos"
+		},
+		"RestServiceDE_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://pokeapi.co/api/v2/"
 		},
 		"containerUri": {
 			"type": "string",
@@ -41,6 +49,12 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"AzureBlobStorageDE_properties_typeProperties_serviceEndpoint": {
+						"value": "[parameters('AzureBlobStorageDE_properties_typeProperties_serviceEndpoint')]"
+					},
+					"RestServiceDE_properties_typeProperties_url": {
+						"value": "[parameters('RestServiceDE_properties_typeProperties_url')]"
 					},
 					"AzureSqlDatabaseDE_properties_typeProperties_server": {
 						"value": "[parameters('AzureSqlDatabaseDE_properties_typeProperties_server')]"

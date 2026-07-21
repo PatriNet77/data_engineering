@@ -5,11 +5,17 @@
 		"factoryName": {
 			"value": "defactoriadedatos"
 		},
+		"AzureBlobStorageDE_properties_typeProperties_serviceEndpoint": {
+			"value": "https://cuentadealmacenpato.blob.core.windows.net/"
+		},
 		"AzureSqlDatabaseDE_properties_typeProperties_server": {
 			"value": "deservidorsql.database.windows.net"
 		},
 		"AzureSqlDatabaseDE_properties_typeProperties_database": {
 			"value": "debasededatos"
+		},
+		"RestServiceDE_properties_typeProperties_url": {
+			"value": "https://pokeapi.co/api/v2/"
 		},
 		"containerUri": {
 			"value": ""

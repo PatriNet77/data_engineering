@@ -7,6 +7,10 @@
 			"metadata": "Nombre de instancia de Data Factory",
 			"defaultValue": "defactoriadedatos"
 		},
+		"AzureBlobStorageDE_properties_typeProperties_serviceEndpoint": {
+			"type": "string",
+			"defaultValue": "https://cuentadealmacenpato.blob.core.windows.net/"
+		},
 		"AzureSqlDatabaseDE_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "deservidorsql.database.windows.net"
@@ -14,6 +18,10 @@
 		"AzureSqlDatabaseDE_properties_typeProperties_database": {
 			"type": "string",
 			"defaultValue": "debasededatos"
+		},
+		"RestServiceDE_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://pokeapi.co/api/v2/"
 		}
 	},
 	"variables": {
@@ -98,55 +106,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/AzureBlobStorageDE')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobStorage",
-				"typeProperties": {
-					"containerUri": "https://cuentadealmacenpato.blob.core.windows.net/contenedorpato",
-					"authenticationType": "Anonymous"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/credencialazure')]",
-			"type": "Microsoft.DataFactory/factories/credentials",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "ManagedIdentity",
-				"typeProperties": {
-					"resourceId": "/subscriptions/b7c05e58-85aa-4bff-9b8c-41b13a14ef18/resourceGroups/GrupoDeRecursosDE/providers/Microsoft.ManagedIdentity/userAssignedIdentities/deidentidadadmin"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureSqlDatabaseDE')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"server": "[parameters('AzureSqlDatabaseDE_properties_typeProperties_server')]",
-					"database": "[parameters('AzureSqlDatabaseDE_properties_typeProperties_database')]",
-					"encrypt": "optional",
-					"trustServerCertificate": true,
-					"authenticationType": "UserAssignedManagedIdentity",
-					"credential": {
-						"referenceName": "credencialazure",
-						"type": "CredentialReference"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/credentials/credencialazure')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/TitanicDEout')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -222,6 +181,71 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabaseDE')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureBlobStorageDE')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"serviceEndpoint": "[parameters('AzureBlobStorageDE_properties_typeProperties_serviceEndpoint')]",
+					"accountKind": "StorageV2"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlDatabaseDE')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"server": "[parameters('AzureSqlDatabaseDE_properties_typeProperties_server')]",
+					"database": "[parameters('AzureSqlDatabaseDE_properties_typeProperties_database')]",
+					"encrypt": "optional",
+					"trustServerCertificate": true,
+					"authenticationType": "UserAssignedManagedIdentity",
+					"credential": {
+						"referenceName": "credencialazure",
+						"type": "CredentialReference"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/credentials/credencialazure')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/RestServiceDE')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "para la api de Pokemon",
+				"annotations": [],
+				"type": "RestService",
+				"typeProperties": {
+					"url": "[parameters('RestServiceDE_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Anonymous"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/credencialazure')]",
+			"type": "Microsoft.DataFactory/factories/credentials",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "ManagedIdentity",
+				"typeProperties": {
+					"resourceId": "/subscriptions/b7c05e58-85aa-4bff-9b8c-41b13a14ef18/resourcegroups/GrupoDeRecursosDE/providers/Microsoft.ManagedIdentity/userAssignedIdentities/deidentidadadmin"
+				}
+			},
+			"dependsOn": []
 		}
 	]
 }
