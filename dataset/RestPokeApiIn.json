@@ -1,0 +1,15 @@
+{
+	"name": "RestPokeApiIn",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "RestServiceDE",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": "https://pokeapi.co/api/v2/pokemon?limit=10&offset=0"
+		},
+		"schema": []
+	}
+}
